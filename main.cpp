@@ -62,6 +62,9 @@ int main(int const argc, char** argv)
         return -1;
     }
 
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
     Shader shader("shaders/sprite.vs", "shaders/sprite.fs");
 
     unsigned int indices[] = {
@@ -88,7 +91,7 @@ int main(int const argc, char** argv)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
     int width, height, nrChannels;
-    stbi_set_flip_vertically_on_load(true);
+    stbi_set_flip_vertically_on_load(false);
 
     unsigned char *data = stbi_load(std::filesystem::path(spriteName).string().c_str(), &width, &height, &nrChannels, 0);
     if (data)

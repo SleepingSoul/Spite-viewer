@@ -1,4 +1,5 @@
 #include "SpriteUVGenerator.h"
+#include <iostream>
 
 SpiteUVGenerator::SpiteUVGenerator(size_t const rows, const size_t columns, size_t const number)
     : m_rows(rows)
@@ -14,6 +15,8 @@ SpiteUVGenerator::SpiteUVGenerator(size_t const rows, const size_t columns, size
 RectCoords SpiteUVGenerator::GetNextUV()
 {
     using glm::vec2;
+
+    std::cerr << m_currentRow << " " << m_currentColumn << " " << m_currentIndex << '\n';
     
     vec2 const topLeft = { m_currentColumn * m_horizontalPart, m_currentRow * m_verticalPart };
     vec2 const topRight = topLeft + vec2(m_horizontalPart, 0.f);
@@ -21,14 +24,14 @@ RectCoords SpiteUVGenerator::GetNextUV()
     vec2 const downRight = topLeft + vec2(m_horizontalPart, m_verticalPart);
 
     ++m_currentIndex;
-    if (m_currentIndex >= m_number - 1)
+    if (m_currentIndex >= m_number)
     {
         m_currentIndex = m_currentRow = m_currentColumn = 0;
     }
     else
     {
         ++m_currentColumn;
-        if (m_currentColumn >= m_columns - 1)
+        if (m_currentColumn >= m_columns)
         {
             m_currentColumn = 0;
             ++m_currentRow;
