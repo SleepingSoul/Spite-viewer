@@ -1,5 +1,8 @@
 # Spite-viewer
 Efficient and simple sprite viewer for testing purposes. Written with OpenGL and C++.
+Code from https://learnopengl.com/Getting-started/Textures partially used as a template for this program.
+glfw3, glad used for OpenGL.
+stb_image from https://github.com/nothings/stb used for image loading.
 
 Usage:
 ```
