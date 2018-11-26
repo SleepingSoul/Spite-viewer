@@ -15,8 +15,6 @@ SpiteUVGenerator::SpiteUVGenerator(size_t const rows, const size_t columns, size
 RectCoords SpiteUVGenerator::GetNextUV()
 {
     using glm::vec2;
-
-    std::cerr << m_currentRow << " " << m_currentColumn << " " << m_currentIndex << '\n';
     
     vec2 const topLeft = { m_currentColumn * m_horizontalPart, m_currentRow * m_verticalPart };
     vec2 const topRight = topLeft + vec2(m_horizontalPart, 0.f);
