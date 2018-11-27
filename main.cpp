@@ -82,9 +82,9 @@ int main(int const argc, char** argv)
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-    unsigned int texture;
-    glGenTextures(1, &texture);
-    glBindTexture(GL_TEXTURE_2D, texture);
+    unsigned int sprite;
+    glGenTextures(1, &sprite);
+    glBindTexture(GL_TEXTURE_2D, sprite);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
@@ -107,7 +107,7 @@ int main(int const argc, char** argv)
 
     shader.use();
 
-    glUniform1i(glGetUniformLocation(shader.ID, "texture"), 0);
+    glUniform1i(glGetUniformLocation(shader.ID, "sprite"), 0);
 
     double startTime = glfwGetTime();
     while (!glfwWindowShouldClose(window))
@@ -143,7 +143,7 @@ int main(int const argc, char** argv)
         glClear(GL_COLOR_BUFFER_BIT);
 
         glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, texture);
+        glBindTexture(GL_TEXTURE_2D, sprite);
 
         shader.use();
         glBindVertexArray(VAO);
